@@ -37,6 +37,10 @@ eye.addEventListener('click', function () {
 function Login() {
     var email = $("#user_email").val();
     var password = $("#user_password").val();
+    var datos = {
+        email: email,
+        password: password,
+    }
     if (email.length == 0 || password.length == 0) {
         Swal.fire({
             position: 'center',
@@ -46,10 +50,13 @@ function Login() {
             timer: 1800
         })
     } else {
+        console.log(datos)
         $.ajax({
-            url: `http://158.101.30.210:8080/api/user/${email}/${password}`,
-            Type: "GET",
-            dataType: "JSON",
+            url: 'https://catalogo-virtual-tsp8-backend.onrender.com/api/auth/login',
+            Type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/JSON; charset=utf-8',
+            data: JSON.stringify(datos),
             success: function (respuesta) {
                 // console.log(respuesta);
                 validateCredentials(respuesta);
@@ -66,6 +73,10 @@ var login = document.querySelector("#validate")
 login.addEventListener("click", (e) => {
     var email = $("#user_email").val();
     var password = $("#user_password").val();
+    var datos = {
+        email: email,
+        password: password,
+    }
     if (email.length == 0 || password.length == 0) {
         Swal.fire({
             position: 'center',
@@ -77,14 +88,31 @@ login.addEventListener("click", (e) => {
     } else {
         e.preventDefault();
         $.ajax({
-            url: `http://158.101.30.210:8080/api/user/${email}/${password}`,
-            Type: "GET",
-            dataType: "JSON",
+            url: 'https://catalogo-virtual-tsp8-backend.onrender.com/api/auth/login',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(datos),
             success: function (respuesta) {
-                // console.log(respuesta);
-                validateCredentials(respuesta);
+                console.log(respuesta);
+                 // Manejar la respuesta exitosa
+                console.log('Respuesta del servidor:', respuesta);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login exitoso!',
+                    showConfirmButton: false,
+                    timer: 1800
+                });
             },
             error: function (xhr, status) {
+                Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Error en el login',
+                        text: 'Por favor, verifica tus credenciales e intenta nuevamente.',
+                        showConfirmButton: true
+                    });
                 // console.log(status);
             }
         });
@@ -103,9 +131,9 @@ function registrar() {
     var password = $('#user_password_register').val()
     var repassword = $('#user_confirmPassword_register').val()
     var datos = {
-        name: $("#user_name_register").val(),
-        email: $('#user_email_register').val(),
-        password: $('#user_password_register').val()
+        nombre: name,
+        email: email,
+        password: password
     }
     var datosPeticion = JSON.stringify(datos)
 
@@ -124,27 +152,60 @@ function registrar() {
                 icon: 'success',
                 showConfirmButton: false,
             })
-            setTimeout(() => {
-                $.ajax({
-                    url: 'http://158.101.30.210:8080/api/user/new',
+            //setTimeout(() => {
+            //    $.ajax({
+            //        url: 'https://catalogo-virtual-tsp8-backend.onrender.com/api/users/register',
+            //        type: 'POST',
+            //        dataType: 'json',
+            //        contentType: 'application/json; charset=utf-8',
+            //        data: datosPeticion,
+            //        success: function (respuesta) {
+            //            console.log(respuesta)
+            //            $("#user_name_register").val("")
+            //            $('#user_email_register').val("")
+            //            $('#user_password_register').val("")
+            //            $('#user_confirmPassword_register').val("")
+            //            Swal.fire({
+            //                position: 'center',
+            //                icon: 'success',
+            //                title: 'Registro exitoso!',
+            //                showConfirmButton: false,
+            //                timer: 1800
+            //            });
+            //            // $('#modalRegister').modal('hide')
+            //        },
+            //        error: function (xhr, status) {
+            //            // console.log(status)
+            //        }
+            //    })
+            //    window.location.reload();
+            //}, 3000);
+                            $.ajax({
+                    url: 'https://catalogo-virtual-tsp8-backend.onrender.com/api/users/register',
                     type: 'POST',
-                    dataType: 'JSON',
-                    contentType: 'application/JSON; charset=utf-8',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
                     data: datosPeticion,
                     success: function (respuesta) {
-                        // console.log(respuesta)
+                        console.log(respuesta)
                         $("#user_name_register").val("")
                         $('#user_email_register').val("")
                         $('#user_password_register').val("")
                         $('#user_confirmPassword_register').val("")
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Registro exitoso!',
+                            showConfirmButton: false,
+                            timer: 1800
+                        });
                         // $('#modalRegister').modal('hide')
                     },
                     error: function (xhr, status) {
                         // console.log(status)
                     }
                 })
-                window.location.reload();
-            }, 1900);
+                //window.location.reload();
 
         } else {
             Swal.fire({
@@ -210,7 +271,7 @@ function validateRegister() {
     var email = $('#user_email_register').val()
     $.ajax({
         url: `http://158.101.30.210:8080/api/user/${email}`,
-        type: 'get',
+        type: 'POST',
         dataType: 'json',
         success: function (request) {
             if (request == true) {
