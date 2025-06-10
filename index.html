@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalogo Virtual</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__content">
+        <div class="logo">
+            <h1>Ropa</h1>
+          <!--<a href="#home"
+            ><img class="logo__img" src="./assets/img/logo.png" alt="logo"
+          /></a>-->
+        </div>
+        <nav class="menu">
+          <ul class="menu__list">
+            <li class="menu__item menu__item--search">
+              <input type="text" class="information__input" id="searchInput" placeholder="Buscar..." />
+              <button type="button" class="menu__link" id="searchButton">Buscar</button>
+            </li>
+            <li class="menu__item">
+              <a href="#home" class="menu__link">Carrito</a>
+            </li>
+            <li class="menu__item">
+              <button type="submit" class="menu__item--login">Ingresar</button>
+            </li>
+          </ul>
+        </nav>
+             
+        <div class="hamburger">
+          <span class="line1"></span>
+          <span class="line2"></span>
+          <span class="line3"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <section class="home" id="home">
+        <div class="container presentation">
+          <h1 class="presentation__tittle">Catalogo virtual de ropa</h1>
+          <p class="presentation__description">
+            Ofrecemos una gran variedad de ropa
+          </p>
+          <div class="presentation__buttons">
+            <a
+              class="presentation__button"
+              href="#products"
+              rel="noopener noreferrer"
+              >Explora</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section products" id="products">
+        <div class="container">
+          <h1 class="section-title">Productos</h1>
+          <div class="offers__content">
+            <div class="offer">
+              <img
+                class="offer__img"
+                loading="lazy"
+                src="./assets/img/Chaquetas.png"
+                alt="Chaquetas"
+              />
+              <div class="offer__description">
+                <h3 class="offer__tittle">Chaquetas</h3>
+                <p>Talla</p>
+              </div>
+            </div>
+            <div class="offer">
+              <img
+                class="offer__img"
+                loading="lazy"
+                src="./assets/img/Pantalones.png"
+                alt="Pantalones"
+              />
+              <div class="offer__description">
+                <h3 class="offer__tittle">Pantalones</h3>
+                <p>Talla</p>
+              </div>
+            </div>
+            <div class="offer">
+              <img
+                class="offer__img"
+                loading="lazy"
+                src="./assets/img/Camisetas.png"
+                alt="Camisetas"
+              />
+              <div class="offer__description">
+                <h3 class="offer__tittle">Camisetas</h3>
+                <p>Talla</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Área para mostrar los resultados de la búsqueda -->
+      <div id="searchResults"></div>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container footer__content">
+        <div class="links">
+          <div class="link">
+            <h4 class="link__tittle">Contacto</h4>
+            <a href="#" class="link--span">Correo</a>
+            <a href="#" class="link--span">Calle 99 No. 25-58</a>
+          </div>
+        </div>
+        <div class="socials">
+          <h4 class="link__tittle">Siguenos</h4>
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>
+          ©
+          <span
+            >Politecnico grancolombiano - Desarrollo de software en equipo - PSP
+            |
+          </span>
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Jquery -->
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/webjars/bootstrap/js/bootstrap.min.js"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/2cb25f2c39.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- functions -->
+    <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>
